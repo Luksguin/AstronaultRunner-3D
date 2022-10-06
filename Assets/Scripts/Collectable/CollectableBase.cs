@@ -20,7 +20,7 @@ public class CollectableBase : MonoBehaviour
         if(systemParticle != null) systemParticle.transform.SetParent(null);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(playerTag != null)
         {
@@ -31,7 +31,7 @@ public class CollectableBase : MonoBehaviour
     protected virtual void Collect()
     {
         OnCollect();
-        animator.SetTrigger(setTrigger);
+        //animator.SetTrigger(setTrigger);
         Destroy(gameObject, destroyTime);
     }
 
