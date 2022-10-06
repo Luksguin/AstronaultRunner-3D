@@ -10,7 +10,6 @@ public class CollectableBase : MonoBehaviour
     [Header("Animations")]
     public Animator animator;
     public string setTrigger;
-    public float destroyTime;
 
     [Header("Sounds")]
     public AudioSource audioClip;
@@ -32,7 +31,7 @@ public class CollectableBase : MonoBehaviour
     {
         OnCollect();
         //animator.SetTrigger(setTrigger);
-        Destroy(gameObject, destroyTime);
+        Destroy(gameObject);
     }
 
     protected virtual void OnCollect()

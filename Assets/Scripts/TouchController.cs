@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TouchController : MonoBehaviour
 {
-    public float velocity;
+    public float touchVelocity;
     private Vector2 _pastPosition;
 
     void Update()
@@ -19,6 +19,6 @@ public class TouchController : MonoBehaviour
 
     public void Move(float speed)
     {
-        transform.position += Vector3.right * Time.deltaTime * speed * velocity;
+        transform.position += Vector3.right * Time.deltaTime * speed * touchVelocity;
     }
 }
