@@ -4,39 +4,53 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject restartMenu;
     public float velocity;
-    public string tagToCheck;
 
-    private Vector3 _pos;
-    private bool _alive = true;
+    [Header("Menus")]
+    public GameObject restartMenu;
+    public GameObject winMenu;
+
+    [Header("Tags")]
+    public string enemyTag;
+    public string finishLineTag;
 
     [Header("Lerp")]
     public Transform lerper;
     public float lerpTime;
 
+    #region PRIVATES VARIABLES
+    private Vector3 _pos;
+    private bool _inGame = true;
+    #endregion
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == tagToCheck)
+        if (collision.transform.tag == enemyTag)
         {
-            EndGame();
+            LoseGame();
+        }
+
+        if (collision.transform.tag == finishLineTag)
+        {
+            WinGame();
         }
     }
 
-    private void Reset()
+    public void WinGame()
     {
-        
+        _inGame = false;
+        if (winMenu != null) winMenu.SetActive(true);
     }
 
-    public void EndGame()
+    public void LoseGame()
     {
-        _alive = false;
-        restartMenu.SetActive(true);
+        _inGame = false;
+        if (restartMenu != null) restartMenu.SetActive(true);
     }
 
     void Update()
     {
-        if (_alive != true) return;
+        if (_inGame != true) return;
 
         _pos = lerper.position;
         _pos.y = transform.position.y;
