@@ -4,18 +4,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject restartMenu;
     public float velocity;
     public string tagToCheck;
-    private bool _alive;
+
     private Vector3 _pos;
+    private bool _alive = true;
 
     [Header("Lerp")]
     public Transform lerper;
     public float lerpTime;
 
-    private void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        _alive = true;
+        if (collision.transform.tag == tagToCheck)
+        {
+            EndGame();
+        }
+    }
+
+    private void Reset()
+    {
+        
+    }
+
+    public void EndGame()
+    {
+        _alive = false;
+        restartMenu.SetActive(true);
     }
 
     void Update()
@@ -28,13 +44,5 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpTime * Time.deltaTime);
         transform.Translate(transform.forward * velocity * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == tagToCheck)
-        {
-            _alive = false;
-        }
     }
 }
