@@ -5,11 +5,13 @@ using UnityEngine;
 public class CollectableBase : MonoBehaviour
 {
     public string playerTag;
+
+    [Header("Particle")]
     public ParticleSystem systemParticle;
 
     [Header("Animations")]
     public Animator animator;
-    public string setTrigger;
+    //public string setTrigger;
 
     [Header("Sounds")]
     public AudioSource audioClip;
@@ -31,7 +33,6 @@ public class CollectableBase : MonoBehaviour
     {
         OnCollect();
         //animator.SetTrigger(setTrigger);
-        Destroy(gameObject);
     }
 
     protected virtual void OnCollect()

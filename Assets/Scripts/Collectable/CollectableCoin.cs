@@ -8,5 +8,6 @@ public class CollectableCoin : CollectableBase
     {
         base.OnCollect();
         CollectableManager.instance.AddCoins();
+        Destroy(gameObject);
     }
 }
