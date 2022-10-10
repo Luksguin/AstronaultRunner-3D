@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float velocity;
+    [Header("Velocity")]
+    public float startVelocity;
+    public float currentVelocity;
 
     [Header("Menus")]
     public GameObject restartMenu;
@@ -13,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Tags")]
     public string enemyTag;
     public string finishLineTag;
+    //public string powerUpTag;
 
     [Header("Lerp")]
     public Transform lerper;
@@ -22,6 +25,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 _pos;
     private bool _inGame = true;
     #endregion
+
+    private void Awake()
+    {
+        currentVelocity = startVelocity;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -34,7 +42,17 @@ public class PlayerController : MonoBehaviour
         {
             WinGame();
         }
+
+        /*if (collision.transform.tag == powerUpTag)
+        {
+            PowerUp();
+        }*/
     }
+
+    /*public void PowerUp()
+    {
+        velocity = velocity * 2;
+    }*/
 
     public void WinGame()
     {
@@ -57,6 +75,6 @@ public class PlayerController : MonoBehaviour
         _pos.z = transform.position.z;
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpTime * Time.deltaTime);
-        transform.Translate(transform.forward * velocity * Time.deltaTime);
+        transform.Translate(transform.forward * currentVelocity * Time.deltaTime);
     }
 }
