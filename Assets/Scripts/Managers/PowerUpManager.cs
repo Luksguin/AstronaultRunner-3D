@@ -18,7 +18,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
     {
         _power = powerUpVelocity.forcePowerUp;
     }
-    public void InitPOwerUpVelocity()
+    public void InitPowerUpVelocity()
     {
         playerController.currentVelocity *= _power;
     }
