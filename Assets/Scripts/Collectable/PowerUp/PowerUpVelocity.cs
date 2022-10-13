@@ -9,22 +9,18 @@ public class PowerUpVelocity : PowerUpBase
     public MeshRenderer meshRenderer;
     public float forcePowerUp;
 
-    protected override void OnCollect()
+    protected override void StartPowerUp()
     {
-        base.OnCollect();
-        CollectableManager.instance.MultiplyVelocity();
+        PowerUpManager.instance.InitPOwerUpVelocity();
+
+        Invoke(nameof(EndPowerUp), duration);
 
         Destroy(meshRenderer);
         Destroy(gameObject, duration);
     }
 
-    /*protected override void StartPowerUp()
-    {
-
-    }*/
-
     protected override void EndPowerUp()
     {
-        playerController.currentVelocity = playerController.startVelocity;
+        PowerUpManager.instance.EndPowerUpVelocity();
     }
 }
