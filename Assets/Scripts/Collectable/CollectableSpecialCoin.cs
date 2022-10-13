@@ -7,6 +7,6 @@ public class CollectableSpecialCoin : CollectableBase
     protected override void OnCollect()
     {
         base.OnCollect();
-        CollectableManager.instance.AddCoins(2);
+        CoinManager.instance.AddCoins(2);
     }
 }
