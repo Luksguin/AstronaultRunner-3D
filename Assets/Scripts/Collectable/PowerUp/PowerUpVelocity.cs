@@ -11,9 +11,8 @@ public class PowerUpVelocity : PowerUpBase
 
     protected override void StartPowerUp()
     {
+        base.StartPowerUp();
         PowerUpManager.instance.InitPowerUpVelocity();
-
-        //Invoke(nameof(EndPowerUp), duration);
 
         Destroy(meshRenderer);
         Destroy(gameObject, duration);
@@ -21,6 +20,7 @@ public class PowerUpVelocity : PowerUpBase
 
     protected override void EndPowerUp()
     {
+        base.EndPowerUp();
         PowerUpManager.instance.EndPowerUpVelocity();
     }
 }
