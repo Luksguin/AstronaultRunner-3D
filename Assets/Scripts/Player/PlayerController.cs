@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     [Header("Tags")]
     public string enemyTag;
     public string finishLineTag;
-    //public string powerUpTag;
 
     [Header("Lerp")]
     public Transform lerper;
@@ -24,6 +23,7 @@ public class PlayerController : MonoBehaviour
     #region PRIVATES VARIABLES
     private Vector3 _pos;
     private bool _inGame = true;
+    public bool invencible = false;
     #endregion
 
     private void Awake()
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == enemyTag)
+        if (collision.transform.tag == enemyTag && invencible == false)
         {
             LoseGame();
         }
@@ -42,17 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             WinGame();
         }
-
-        /*if (collision.transform.tag == powerUpTag)
-        {
-            PowerUp();
-        }*/
     }
-
-    /*public void PowerUp()
-    {
-        velocity = velocity * 2;
-    }*/
 
     public void WinGame()
     {

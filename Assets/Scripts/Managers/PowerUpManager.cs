@@ -6,8 +6,17 @@ using Ebac.Core.Singleton;
 public class PowerUpManager : Singleton<PowerUpManager>
 {
     public PlayerController playerController;
-    public PowerUpVelocity powerUpVelocity;
-    private float _power;
+
+    [Header("PowerUpVelocity")]
+    //public PowerUpVelocity powerUpVelocity;
+    //public float powerUpVelocityDuration;
+    public float forcePowerUpVelocity;
+
+    #region PROTOTYPE 
+    /*[Header("PowerUpInvencible")]
+    public PowerUpInvencible powerUpInvencible;
+    public float powerUpInvencibleDuration;*/
+    #endregion
 
     private void Start()
     {
@@ -16,15 +25,29 @@ public class PowerUpManager : Singleton<PowerUpManager>
 
     private void Reset()
     {
-        _power = powerUpVelocity.forcePowerUp;
+        #region PROTOTYPE 2
+        //powerUpInvencible.duration = powerUpInvencibleDuration;
+        //powerUpVelocity.duration = powerUpVelocityDuration;
+        #endregion
     }
+
     public void InitPowerUpVelocity()
     {
-        playerController.currentVelocity *= _power;
+        playerController.currentVelocity *= forcePowerUpVelocity;
     }
 
     public void EndPowerUpVelocity()
     {
         playerController.currentVelocity = playerController.startVelocity;
+    }
+
+    public void InitPowerUpInvencible()
+    {
+        playerController.invencible = true;
+    }
+
+    public void EndPowerUpInvencible()
+    {
+        playerController.invencible = false;
     }
 }
