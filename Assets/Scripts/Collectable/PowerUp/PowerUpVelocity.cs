@@ -7,7 +7,6 @@ public class PowerUpVelocity : PowerUpBase
     [Header("PowerUp Velocity")]
     public PlayerController playerController;
     public MeshRenderer meshRenderer;
-    public float forcePowerUp;
 
     protected override void StartPowerUp()
     {
