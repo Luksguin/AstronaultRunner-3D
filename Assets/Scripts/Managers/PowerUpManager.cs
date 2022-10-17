@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
+using DG.Tweening;
 
 public class PowerUpManager : Singleton<PowerUpManager>
 {
@@ -18,6 +19,10 @@ public class PowerUpManager : Singleton<PowerUpManager>
     public float powerUpInvencibleDuration;*/
     #endregion
 
+    [Header("PowerUpFly")]
+    public Transform playerTransform;
+    private Vector3 _startHeigth;
+
     private void Start()
     {
         Reset();
@@ -31,6 +36,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
         #endregion
     }
 
+    #region VELOCITY
     public void InitPowerUpVelocity()
     {
         playerController.currentVelocity *= forcePowerUpVelocity;
@@ -40,7 +46,9 @@ public class PowerUpManager : Singleton<PowerUpManager>
     {
         playerController.currentVelocity = playerController.startVelocity;
     }
+    #endregion
 
+    #region INVENCIBLE
     public void InitPowerUpInvencible()
     {
         playerController.invencible = true;
@@ -49,5 +57,16 @@ public class PowerUpManager : Singleton<PowerUpManager>
     public void EndPowerUpInvencible()
     {
         playerController.invencible = false;
+    }
+    #endregion
+
+    public void InitPowerUpFly(float amount, float duration, float animationDuration, Ease ease)
+    {
+        playerTransform.transform.DOMoveY(_startHeigth.y + amount, animationDuration).SetEase(ease);
+    }
+
+    public void EndPowerUpFly(float animationDuration, Ease ease)
+    {
+        playerTransform.transform.DOMoveY(_startHeigth.y, animationDuration).SetEase(ease);
     }
 }
