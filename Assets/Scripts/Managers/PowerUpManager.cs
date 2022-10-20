@@ -23,6 +23,9 @@ public class PowerUpManager : Singleton<PowerUpManager>
     public Transform playerTransform;
     private Vector3 _startHeigth;
 
+    [Header("PowerUpCoin")]
+    public GameObject coinCollector;
+
     private void Start()
     {
         Reset();
@@ -60,6 +63,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
     }
     #endregion
 
+    #region FLY
     public void InitPowerUpFly(float amount, float duration, float animationDuration, Ease ease)
     {
         playerTransform.transform.DOMoveY(_startHeigth.y + amount, animationDuration).SetEase(ease);
@@ -68,5 +72,11 @@ public class PowerUpManager : Singleton<PowerUpManager>
     public void EndPowerUpFly(float animationDuration, Ease ease)
     {
         playerTransform.transform.DOMoveY(_startHeigth.y, animationDuration).SetEase(ease);
+    }
+    #endregion
+
+    public void ChangeSizeCoinCollector(float amount)
+    {
+        coinCollector.transform.localScale = Vector3.one * amount;
     }
 }

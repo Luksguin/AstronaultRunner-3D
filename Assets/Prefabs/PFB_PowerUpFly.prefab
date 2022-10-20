@@ -109,11 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260c8290ebaf40e46b8d2206b2fc9e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: 
+  collectorTag: Player
   systemParticle: {fileID: 0}
   animator: {fileID: 0}
   audioClip: {fileID: 0}
-  duration: 3
+  duration: 2
   meshRenderer: {fileID: 0}
   amount: 2
   animationDuration: 2
