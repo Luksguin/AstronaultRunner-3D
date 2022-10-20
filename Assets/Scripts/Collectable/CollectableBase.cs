@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CollectableBase : MonoBehaviour
 {
-    public string playerTag;
+    public string collectorTag;
+    public float timeToDestroy;
+    protected bool isPowerUp = false;
 
     [Header("Particle")]
     public ParticleSystem systemParticle;
@@ -23,7 +25,7 @@ public class CollectableBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(playerTag != null)
+        if(collision.gameObject.tag == collectorTag)
         {
             Collect();
         }
@@ -35,9 +37,16 @@ public class CollectableBase : MonoBehaviour
         //animator.SetTrigger(setTrigger);
     }
 
+    protected virtual void DestroyCollectable()
+    {
+        Destroy(gameObject, timeToDestroy);
+    }
+
     protected virtual void OnCollect()
     {
         if (systemParticle != null) systemParticle.Play();
         if (audioClip != null) audioClip.Play();
+
+        if(isPowerUp == false) DestroyCollectable();
     }
 }

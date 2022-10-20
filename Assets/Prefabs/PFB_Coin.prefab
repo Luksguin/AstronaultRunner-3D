@@ -139,7 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07de7b5f4d6ded429a87eadf223452e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
+  collectorTag: CoinCollector
+  timeToDestroy: 0
   systemParticle: {fileID: 0}
   animator: {fileID: 0}
   audioClip: {fileID: 0}
+  playerController: {fileID: 0}
+  minDistance: 1
+  lerpCoin: 3.8

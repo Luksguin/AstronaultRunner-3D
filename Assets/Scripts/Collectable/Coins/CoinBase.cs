@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class CoinBase : CollectableBase
 {
+    public PlayerController playerController;
+
+    [Header("Coin Settings")]
+    public float minDistance;
+    public float lerpCoin;
+    private bool _collected = false;
+
     protected override void OnCollect()
     {
-        base.OnCollect();
-        CoinManager.instance.AddCoins();
-        Destroy(gameObject);
+        //CoinManager.instance.AddCoins();
+        _collected = true;
+    }
+
+    private void Update()
+    {
+        if (_collected)
+        {
+            transform.position = Vector3.Lerp(transform.position, playerController.transform.position, lerpCoin * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, playerController.transform.position) < minDistance)
+            {
+                DestroyCollectable();
+            }
+        }
     }
 }
