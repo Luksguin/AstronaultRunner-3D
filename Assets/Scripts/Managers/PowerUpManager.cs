@@ -13,6 +13,10 @@ public class PowerUpManager : Singleton<PowerUpManager>
     //public float powerUpVelocityDuration;
     public float forcePowerUpVelocity;
 
+    [Header("PowerUpInvencible")]
+    public Color startColor;
+    public Color newColor;
+
     #region PROTOTYPE 
     /*[Header("PowerUpInvencible")]
     public PowerUpInvencible powerUpInvencible;
@@ -52,14 +56,21 @@ public class PowerUpManager : Singleton<PowerUpManager>
     #endregion
 
     #region INVENCIBLE
+    private void ChangeColor(Color newColor)
+    {
+        playerController.playerRenderer.material.SetColor("_Color", newColor);
+    }
+
     public void InitPowerUpInvencible()
     {
         playerController.invencible = true;
+        ChangeColor(newColor);
     }
 
     public void EndPowerUpInvencible()
     {
         playerController.invencible = false;
+        ChangeColor(startColor);
     }
     #endregion
 
@@ -75,8 +86,10 @@ public class PowerUpManager : Singleton<PowerUpManager>
     }
     #endregion
 
+    #region COIN
     public void ChangeSizeCoinCollector(float amount)
     {
         coinCollector.transform.localScale = Vector3.one * amount;
     }
+    #endregion
 }

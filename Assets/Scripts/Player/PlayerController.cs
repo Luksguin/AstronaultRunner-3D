@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Velocity")]
+    [Header("PowerUp")]
+    public MeshRenderer playerRenderer;
+
     public float startVelocity;
     public float currentVelocity;
 

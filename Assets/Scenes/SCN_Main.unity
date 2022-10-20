@@ -2781,6 +2781,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1372686504}
   forcePowerUpVelocity: 2
+  startColor: {r: 1, g: 0.19215687, b: 0.19215687, a: 1}
+  newColor: {r: 1, g: 0.31156966, b: 0.23400003, a: 1}
   playerTransform: {fileID: 1372686502}
   coinCollector: {fileID: 1312719183}
 --- !u!1001 &1176403174
@@ -3280,6 +3282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7069e6956ddce09428346e587e429f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRenderer: {fileID: 1372686500}
   startVelocity: 5
   currentVelocity: 0
   restartMenu: {fileID: 324241571}
@@ -5494,7 +5497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977055268530306166, guid: 59066b21867fa2543acdad74f6ab5f40, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.5
+      value: -9.03
       objectReference: {fileID: 0}
     - target: {fileID: 6977055268530306166, guid: 59066b21867fa2543acdad74f6ab5f40, type: 3}
       propertyPath: m_LocalRotation.w

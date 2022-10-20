@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PowerUpInvencible : PowerUpBase
 {
-
     protected override void StartPowerUp()
     {
         base.StartPowerUp();
