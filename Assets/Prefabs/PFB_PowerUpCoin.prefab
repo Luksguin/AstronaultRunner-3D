@@ -116,4 +116,4 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   duration: 2
   meshRenderer: {fileID: 5362468579514626177}
-  forcePowerUp: 8
+  forcePowerUp: 10

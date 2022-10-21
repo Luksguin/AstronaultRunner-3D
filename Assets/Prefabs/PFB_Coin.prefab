@@ -145,5 +145,5 @@ MonoBehaviour:
   animator: {fileID: 0}
   audioClip: {fileID: 0}
   playerController: {fileID: 0}
-  minDistance: 1
-  lerpCoin: 3.8
+  minDistance: 1.2
+  lerpCoin: 4
