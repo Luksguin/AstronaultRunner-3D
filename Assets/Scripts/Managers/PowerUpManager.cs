@@ -51,7 +51,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
 
     public void EndPowerUpVelocity()
     {
-        playerController.currentVelocity = playerController.startVelocity;
+        playerController.currentVelocity = playerController.playerVelocity;
     }
     #endregion
 
@@ -89,7 +89,8 @@ public class PowerUpManager : Singleton<PowerUpManager>
     #region COIN
     public void ChangeSizeCoinCollector(float amount)
     {
-        coinCollector.transform.localScale = Vector3.one * amount;
+        //coinCollector.transform.localScale = Vector3.one * amount;
+        coinCollector.transform.DOScaleX(amount, .1f);
     }
     #endregion
 }

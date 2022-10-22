@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
-    public void Start()
+    [Header("Animation")]
+    public PlayerController playerController;
+
+    /*public void Start()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 
-    /*public void Pause()
+    public void Play()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void Pause()
     {
         Time.timeScale = 0;
     }*/
 
     public void PlayGame()
     {
-        Time.timeScale = 1;
+        playerController.currentVelocity = playerController.playerVelocity;
+        AnimationManager.instance.Play(AnimationManager.AnimationsType.RUN);
     }
 }
