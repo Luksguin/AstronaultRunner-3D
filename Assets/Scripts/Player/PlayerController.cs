@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("PowerUp")]
     public MeshRenderer playerRenderer;
-
-    public float startVelocity;
+    private float _startVelocity = 0f;
+    public float playerVelocity;
     public float currentVelocity;
 
     [Header("Menus")]
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Tags")]
     public string enemyTag;
+    public string playerTag;
     public string finishLineTag;
 
     [Header("Lerp")]
@@ -30,20 +32,28 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        currentVelocity = startVelocity;
+        currentVelocity = _startVelocity;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == enemyTag && invencible == false)
+        if (collision.transform.tag == enemyTag && invencible == false) //&& collision.gameObject.tag == playerTag)
         {
+            MoveBack();
             LoseGame();
+            AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH);
         }
 
         if (collision.transform.tag == finishLineTag)
         {
             WinGame();
+            AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE);
         }
+    }
+
+    public void MoveBack()
+    {
+        transform.DOMoveZ(-.9f, 1f).SetRelative();
     }
 
     public void WinGame()
