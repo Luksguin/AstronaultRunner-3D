@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PauseGame : MonoBehaviour
 {
-    [Header("Animation")]
     public PlayerController playerController;
 
     /*public void Start()
@@ -24,7 +23,7 @@ public class PauseGame : MonoBehaviour
 
     public void PlayGame()
     {
-        playerController.currentVelocity = playerController.playerVelocity;
-        AnimationManager.instance.Play(AnimationManager.AnimationsType.RUN);
+        //playerController.currentVelocity = playerController.playerVelocity;
+        playerController._inGame = true;
     }
 }
