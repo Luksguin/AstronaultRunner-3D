@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     [Header("PowerUp")]
     public MeshRenderer playerRenderer;
-    private float _startVelocity = 0f;
+
     public float playerVelocity;
     public float currentVelocity;
+
+    public bool invencible = false;
 
     [Header("Menus")]
     public GameObject restartMenu;
@@ -24,36 +26,40 @@ public class PlayerController : MonoBehaviour
     public Transform lerper;
     public float lerpTime;
 
+    [Header("Animation")]
+    public float distanceMoveBack;
+    public float timeMoveBack;
+    public bool _inGame = false;
+
     #region PRIVATES VARIABLES
     private Vector3 _pos;
-    private bool _inGame = true;
-    public bool invencible = false;
+    private float _baseSpeed;
     #endregion
 
     private void Awake()
     {
-        currentVelocity = _startVelocity;
+        currentVelocity = playerVelocity;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == enemyTag && invencible == false) //&& collision.gameObject.tag == playerTag)
+        if (collision.transform.tag == enemyTag && invencible == false)
         {
             MoveBack();
             LoseGame();
-            AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH);
+            AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH, _baseSpeed);
         }
 
         if (collision.transform.tag == finishLineTag)
         {
             WinGame();
-            AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE);
+            AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, _baseSpeed);
         }
     }
 
     public void MoveBack()
     {
-        transform.DOMoveZ(-.9f, 1f).SetRelative();
+        transform.DOMoveZ(- distanceMoveBack, timeMoveBack).SetRelative();
     }
 
     public void WinGame()
@@ -70,6 +76,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        _baseSpeed = playerVelocity;
+
         if (_inGame != true) return;
 
         _pos = lerper.position;
@@ -78,5 +86,7 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpTime * Time.deltaTime);
         transform.Translate(transform.forward * currentVelocity * Time.deltaTime);
+
+        AnimationManager.instance.Play(AnimationManager.AnimationsType.RUN, currentVelocity / _baseSpeed);
     }
 }

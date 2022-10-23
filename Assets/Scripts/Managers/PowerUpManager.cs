@@ -9,19 +9,11 @@ public class PowerUpManager : Singleton<PowerUpManager>
     public PlayerController playerController;
 
     [Header("PowerUpVelocity")]
-    //public PowerUpVelocity powerUpVelocity;
-    //public float powerUpVelocityDuration;
     public float forcePowerUpVelocity;
 
     [Header("PowerUpInvencible")]
     public Color startColor;
     public Color newColor;
-
-    #region PROTOTYPE 
-    /*[Header("PowerUpInvencible")]
-    public PowerUpInvencible powerUpInvencible;
-    public float powerUpInvencibleDuration;*/
-    #endregion
 
     [Header("PowerUpFly")]
     public Transform playerTransform;
@@ -37,10 +29,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
 
     private void Reset()
     {
-        #region PROTOTYPE 2
-        //powerUpInvencible.duration = powerUpInvencibleDuration;
-        //powerUpVelocity.duration = powerUpVelocityDuration;
-        #endregion
+
     }
 
     #region VELOCITY
@@ -89,7 +78,6 @@ public class PowerUpManager : Singleton<PowerUpManager>
     #region COIN
     public void ChangeSizeCoinCollector(float amount)
     {
-        //coinCollector.transform.localScale = Vector3.one * amount;
         coinCollector.transform.DOScaleX(amount, .1f);
     }
     #endregion

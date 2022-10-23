@@ -15,38 +15,24 @@ public class AnimationManager : Singleton<AnimationManager>
         DEATH
     }
 
-    public void Play(AnimationsType type)
+    public void Play(AnimationsType type, float currentSpeed = 1f)
     {
         foreach(var animation in animationSetup)
         {
             if(animation.type == type)
             {
                 animator.SetTrigger(animation.trigger);
+                animator.speed = animation.speed * currentSpeed;
                 break;
             }
         }
     }
-
-    /*private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Play(AnimationsType.IDLE);
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            Play(AnimationsType.RUN);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            Play(AnimationsType.DEATH);
-        }
-    }*/
 }
 
 [System.Serializable]
 public class AnimationSetup
 {
     public AnimationManager.AnimationsType type;
+    public float speed;
     public string trigger;
 }
