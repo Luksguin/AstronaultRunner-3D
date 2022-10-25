@@ -47,13 +47,11 @@ public class PlayerController : MonoBehaviour
         {
             MoveBack();
             LoseGame();
-            AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH, _baseSpeed);
         }
 
         if (collision.transform.tag == finishLineTag)
         {
             WinGame();
-            AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, _baseSpeed);
         }
     }
 
@@ -65,12 +63,14 @@ public class PlayerController : MonoBehaviour
     public void WinGame()
     {
         _inGame = false;
+        AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, _baseSpeed);
         if (winMenu != null) winMenu.SetActive(true);
     }
 
     public void LoseGame()
     {
         _inGame = false;
+        AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH, _baseSpeed);
         if (restartMenu != null) restartMenu.SetActive(true);
     }
 
