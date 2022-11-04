@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         currentVelocity = playerVelocity;
+        //AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, currentVelocity / _baseSpeed);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -63,8 +64,9 @@ public class PlayerController : MonoBehaviour
     public void WinGame()
     {
         _inGame = false;
-        AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, _baseSpeed);
+        AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, currentVelocity / _baseSpeed);
         if (winMenu != null) winMenu.SetActive(true);
+        Debug.Log(_inGame);
     }
 
     public void LoseGame()
