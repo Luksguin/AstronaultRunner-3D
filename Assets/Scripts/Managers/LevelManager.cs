@@ -16,13 +16,13 @@ public class LevelManager : MonoBehaviour
 
     public List<LevelSetup> pieceSetup;
 
-    private List<PieceManager> _spawnedPieces;
+    private List<PieceManager> _spawnedPieces = new List<PieceManager>();
     private LevelSetup _currSetup;
 
     private void Awake()
     {
         //SpawnLevel();
-        SpawnPieces();
+        //SpawnPieces();
     }
 
     public void SpawnLevel()
@@ -64,8 +64,6 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator SpawnPiecesCoroutine()
     {
-        _spawnedPieces = new List<PieceManager>();
-
         if (_currSetup != null)
         {
             Destroy(_currSetup);
@@ -98,11 +96,22 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void CleanPieces()
+    {
+        for(int i = _spawnedPieces.Count - 1; i >= 0; i--)
+        {
+            DestroyImmediate(_spawnedPieces[i].gameObject);
+        }
+
+        _spawnedPieces.Clear();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnLevel();
+            CleanPieces();
+            SpawnPieces();
         }
     }
 }
