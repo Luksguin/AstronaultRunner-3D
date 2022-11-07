@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    private int _index;
+
     [Header("Levels")]
     public List<GameObject> levels;
 
-    private int _index;
     private GameObject _currentLevel;
 
     [Header("Pieces")]
-    public int amountStartPieces;
-    public int amountPieces;
-    public int amountEndPieces;
-
-    public float timeBetweenPieces;
     public Transform container;
 
-    public List<PieceManager> startPieces;
-    public List<PieceManager> pieces;
-    public List<PieceManager> endPieces;
+    public List<LevelSetup> pieceSetup;
 
     private List<PieceManager> _spawnedPieces;
+    private LevelSetup _currSetup;
 
     private void Awake()
     {
@@ -71,22 +66,35 @@ public class LevelManager : MonoBehaviour
     {
         _spawnedPieces = new List<PieceManager>();
 
-        for (int i = 0; i < amountStartPieces; i++)
+        if (_currSetup != null)
         {
-            CreatePieces(startPieces);
-            yield return new WaitForSeconds(timeBetweenPieces);
+            Destroy(_currSetup);
+            _index++;
+
+            if (_index >= pieceSetup.Count)
+            {
+                _index = 0;
+            }
         }
 
-        for (int i = 0; i < amountPieces; i++)
+        _currSetup = pieceSetup[_index];
+
+        for (int i = 0; i < _currSetup.amountStartPieces; i++)
         {
-            CreatePieces(pieces);
-            yield return new WaitForSeconds(timeBetweenPieces);
+            CreatePieces(_currSetup.startPieces);
+            yield return new WaitForSeconds(_currSetup.timeBetweenPieces);
         }
 
-        for (int i = 0; i < amountEndPieces; i++)
+        for (int i = 0; i < _currSetup.amountPieces; i++)
         {
-            CreatePieces(endPieces);
-            yield return new WaitForSeconds(timeBetweenPieces);
+            CreatePieces(_currSetup.pieces);
+            yield return new WaitForSeconds(_currSetup.timeBetweenPieces);
+        }
+
+        for (int i = 0; i < _currSetup.amountEndPieces; i++)
+        {
+            CreatePieces(_currSetup.endPieces);
+            yield return new WaitForSeconds(_currSetup.timeBetweenPieces);
         }
     }
 
