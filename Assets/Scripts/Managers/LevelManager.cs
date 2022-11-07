@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     public List<LevelSetup> pieceSetup;
 
     private List<PieceManager> _spawnedPieces = new List<PieceManager>();
-    private LevelSetup _currSetup;
+    private LevelSetup _currentSetup;
 
     private void Awake()
     {
@@ -59,14 +59,19 @@ public class LevelManager : MonoBehaviour
             spawnedPiece.transform.position = lastPiece.endPiece.position;
         }
 
+        foreach (var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
+        {
+            p.ChangePiece(ArtManager.instance.GetSetupByType(_currentSetup.artType).gameObject);
+        }
+
         _spawnedPieces.Add(spawnedPiece);
     }
 
     IEnumerator SpawnPiecesCoroutine()
     {
-        if (_currSetup != null)
+        if (_currentSetup != null)
         {
-            Destroy(_currSetup);
+            Destroy(_currentSetup);
             _index++;
 
             if (_index >= pieceSetup.Count)
@@ -75,24 +80,24 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        _currSetup = pieceSetup[_index];
+        _currentSetup = pieceSetup[_index];
 
-        for (int i = 0; i < _currSetup.amountStartPieces; i++)
+        for (int i = 0; i < _currentSetup.amountStartPieces; i++)
         {
-            CreatePieces(_currSetup.startPieces);
-            yield return new WaitForSeconds(_currSetup.timeBetweenPieces);
+            CreatePieces(_currentSetup.startPieces);
+            yield return new WaitForSeconds(_currentSetup.timeBetweenPieces);
         }
 
-        for (int i = 0; i < _currSetup.amountPieces; i++)
+        for (int i = 0; i < _currentSetup.amountPieces; i++)
         {
-            CreatePieces(_currSetup.pieces);
-            yield return new WaitForSeconds(_currSetup.timeBetweenPieces);
+            CreatePieces(_currentSetup.pieces);
+            yield return new WaitForSeconds(_currentSetup.timeBetweenPieces);
         }
 
-        for (int i = 0; i < _currSetup.amountEndPieces; i++)
+        for (int i = 0; i < _currentSetup.amountEndPieces; i++)
         {
-            CreatePieces(_currSetup.endPieces);
-            yield return new WaitForSeconds(_currSetup.timeBetweenPieces);
+            CreatePieces(_currentSetup.endPieces);
+            yield return new WaitForSeconds(_currentSetup.timeBetweenPieces);
         }
     }
 

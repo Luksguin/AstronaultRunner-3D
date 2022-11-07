@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b69fcc0604e8384697dbefdb6cfebc3, type: 3}
   m_Name: SO LevelSetup 01
   m_EditorClassIdentifier: 
+  artType: 1
   amountStartPieces: 2
   amountPieces: 5
   amountEndPieces: 1
