@@ -1100,7 +1100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.16277237, y: 0.001479992, z: -0.0002441621, w: 0.9866625}
-  m_LocalPosition: {x: 0, y: 2.95, z: -18.09}
+  m_LocalPosition: {x: 0, y: 2.95, z: -4.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 856706388}
@@ -1510,7 +1510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372686497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -13.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1923831446}
@@ -1639,14 +1639,18 @@ MonoBehaviour:
   levels:
   - {fileID: 368426216656786829, guid: 9e4b8e6871b6efb40b610b0e4d1a2a35, type: 3}
   - {fileID: 368426216656786829, guid: 39b5162e00035fc4a977f094dbbe9135, type: 3}
-  pieces:
+  amountStartPieces: 2
+  amountPieces: 10
+  amountEndPieces: 2
+  timeBetweenPieces: 0.2
+  container: {fileID: 1127686122}
+  startPieces:
   - {fileID: 534523605367856963, guid: c38d5dfc31ee4d443b500af257aac313, type: 3}
-  - {fileID: 6939623424525971512, guid: 7613f457ee93530499701f42cbd409b4, type: 3}
+  pieces:
   - {fileID: 4269246911135669867, guid: 69247c9eef2550b49ab3840eacad4887, type: 3}
   - {fileID: 4110298240100668893, guid: 0a89d453ca5082441bbf850a401a72b4, type: 3}
-  amountPieces: 15
-  container: {fileID: 1127686122}
-  timeBetweenPieces: 0.4
+  endPieces:
+  - {fileID: 6939623424525971512, guid: 7613f457ee93530499701f42cbd409b4, type: 3}
 --- !u!1001 &1699803478
 PrefabInstance:
   m_ObjectHideFlags: 0
