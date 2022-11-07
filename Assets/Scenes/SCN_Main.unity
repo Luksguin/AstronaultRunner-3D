@@ -1644,7 +1644,7 @@ MonoBehaviour:
   - {fileID: 6939623424525971512, guid: 7613f457ee93530499701f42cbd409b4, type: 3}
   - {fileID: 4269246911135669867, guid: 69247c9eef2550b49ab3840eacad4887, type: 3}
   - {fileID: 4110298240100668893, guid: 0a89d453ca5082441bbf850a401a72b4, type: 3}
-  amountPieces: 3
+  amountPieces: 15
   container: {fileID: 1127686122}
   timeBetweenPieces: 0.4
 --- !u!1001 &1699803478
