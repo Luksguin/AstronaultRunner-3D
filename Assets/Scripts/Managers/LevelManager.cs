@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Levels")]
     public List<GameObject> levels;
 
-    public List<PieceManager> pieces;
+    private int _index;
+    private GameObject _currentLevel;
+
+    [Header("Pieces")]
+    public int amountStartPieces;
     public int amountPieces;
+    public int amountEndPieces;
+
+    public float timeBetweenPieces;
+    public Transform container;
+
+    public List<PieceManager> startPieces;
+    public List<PieceManager> pieces;
+    public List<PieceManager> endPieces;
 
     private List<PieceManager> _spawnedPieces;
-    
-    public Transform container;
-    public float timeBetweenPieces;
-
-    private GameObject _currentLevel;
-    private int _index;
 
     private void Awake()
     {
@@ -45,9 +52,9 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(SpawnPiecesCoroutine());
     }
 
-    public void SpawnPiece()
+    public void CreatePieces(List<PieceManager> list)
     {
-        var piece = pieces[Random.Range(0, pieces.Count)];
+        var piece = list[Random.Range(0, list.Count)];
         var spawnedPiece = Instantiate(piece, container);
 
         if(_spawnedPieces.Count > 0)
@@ -64,9 +71,21 @@ public class LevelManager : MonoBehaviour
     {
         _spawnedPieces = new List<PieceManager>();
 
+        for (int i = 0; i < amountStartPieces; i++)
+        {
+            CreatePieces(startPieces);
+            yield return new WaitForSeconds(timeBetweenPieces);
+        }
+
         for (int i = 0; i < amountPieces; i++)
         {
-            SpawnPiece();
+            CreatePieces(pieces);
+            yield return new WaitForSeconds(timeBetweenPieces);
+        }
+
+        for (int i = 0; i < amountEndPieces; i++)
+        {
+            CreatePieces(endPieces);
             yield return new WaitForSeconds(timeBetweenPieces);
         }
     }
