@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnPieces()
     {
         StartCoroutine(SpawnPiecesCoroutine());
+        ColorManager.instance.GetColorByType(_currentSetup.artType);
     }
 
     public void CreatePieces(List<PieceManager> list)
@@ -99,6 +100,8 @@ public class LevelManager : MonoBehaviour
             CreatePieces(_currentSetup.endPieces);
             yield return new WaitForSeconds(_currentSetup.timeBetweenPieces);
         }
+
+        //ColorManager.instance.GetColorByType(_currentSetup.artType);
     }
 
     public void CleanPieces()

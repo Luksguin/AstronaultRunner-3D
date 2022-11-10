@@ -9,7 +9,7 @@ public class ArtManager : Singleton<ArtManager>
     {
         CITY,
         FARM,
-        FLOREST
+        DESERT
     }
 
     public List<ArtSetup> artSetup;
