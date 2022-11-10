@@ -744,6 +744,65 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7193805671317595757, guid: 89e20167823a30d459856414377997d1, type: 3}
   m_PrefabInstance: {fileID: 53346628}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &573186499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 573186500}
+  - component: {fileID: 573186501}
+  m_Layer: 0
+  m_Name: ColorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &573186500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573186499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1360279692}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &573186501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573186499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58370c34b4009ca47a54e0ec1076b5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 567ea96a93970af4aba9a6781655d8d9, type: 2}
+  - {fileID: 2100000, guid: 0956dcd4ed54b6145a2115152153b539, type: 2}
+  colorSetups:
+  - artType: 0
+    colors:
+    - {r: 0.36200002, g: 0.36200002, b: 0.36200002, a: 1}
+    - {r: 1, g: 0.8333334, b: 0, a: 1}
+  - artType: 1
+    colors:
+    - {r: 0.05412419, g: 0.355, b: 0.042954996, a: 1}
+    - {r: 1, g: 0, b: 0, a: 1}
+  - artType: 2
+    colors:
+    - {r: 0.355, g: 0.1775, b: 0, a: 1}
+    - {r: 0.2884535, g: 0.915, b: 0.05856001, a: 1}
 --- !u!1 &686232366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1400,7 @@ Transform:
   - {fileID: 1307509459}
   - {fileID: 1605739247}
   - {fileID: 1404100351}
+  - {fileID: 573186500}
   m_Father: {fileID: 1454898182}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
