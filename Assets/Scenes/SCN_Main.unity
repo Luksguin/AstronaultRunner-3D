@@ -1532,9 +1532,9 @@ MonoBehaviour:
   - artType: 0
     gameObject: {fileID: 8897740565207883350, guid: 7dcdc1b283259b44581732312f6e6db5, type: 3}
   - artType: 1
-    gameObject: {fileID: 7140074486154047672, guid: 8628d33aeafe12040b1723f7b5b67653, type: 3}
-  - artType: 2
     gameObject: {fileID: 5281365014853164286, guid: 08768c298db71fd4d8660a6cc8c39206, type: 3}
+  - artType: 2
+    gameObject: {fileID: 7140074486154047672, guid: 8628d33aeafe12040b1723f7b5b67653, type: 3}
 --- !u!1 &1454898181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1617,8 @@ MonoBehaviour:
   container: {fileID: 1127686122}
   pieceSetup:
   - {fileID: 11400000, guid: 0d06345dac9bd1447a45b2f0a149efa4, type: 2}
+  - {fileID: 11400000, guid: d0f2db587c5688a4fb8dd002390d5831, type: 2}
+  - {fileID: 11400000, guid: b0a6ffb86dae8d547ad811e6e4c67c72, type: 2}
 --- !u!4 &1923831446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5156129202013452133, guid: 89e20167823a30d459856414377997d1, type: 3}
