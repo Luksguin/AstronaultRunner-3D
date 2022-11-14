@@ -27,11 +27,11 @@ public class ItenMoviment : MonoBehaviour
 
         while (true)
         {
-            var currentPosition = transform.position;
+            var currentPosition = transform.localPosition;
 
-            while(time< duration)
+            while(time < duration)
             {
-                transform.position = Vector3.Lerp(currentPosition, positions[_index].transform.position, time / duration);
+                transform.localPosition = Vector3.Lerp(currentPosition, positions[_index].transform.localPosition, time / duration);
 
                 time += Time.deltaTime;
 
