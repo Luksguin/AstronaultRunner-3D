@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,8 +14,13 @@ public class LevelManager : MonoBehaviour
 
     [Header("Pieces")]
     public Transform container;
-
     public List<LevelSetup> pieceSetup;
+
+    [Header("SpawnAnimtion")]
+    public float sizePiece;
+    public float spawnTime;
+    public float spawnDelay;
+    public Ease ease;
 
     private List<PieceManager> _spawnedPieces = new List<PieceManager>();
     private LevelSetup _currentSetup;
@@ -44,8 +50,9 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnPieces()
     {
-        StartCoroutine(SpawnPiecesCoroutine());
-        ColorManager.instance.GetColorByType(_currentSetup.artType);
+        BuildPieces();
+
+        //StartCoroutine(SpawnPiecesCoroutine());
     }
 
     public void CreatePieces(List<PieceManager> list)
@@ -66,6 +73,41 @@ public class LevelManager : MonoBehaviour
         }
 
         _spawnedPieces.Add(spawnedPiece);
+    }
+
+    public void BuildPieces()
+    {
+        if (_currentSetup != null)
+        {
+            Destroy(_currentSetup);
+            _index++;
+
+            if (_index >= pieceSetup.Count)
+            {
+                _index = 0;
+            }
+        }
+
+        _currentSetup = pieceSetup[_index];
+
+        for (int i = 0; i < _currentSetup.amountStartPieces; i++)
+        {
+            CreatePieces(_currentSetup.startPieces);
+        }
+
+        for (int i = 0; i < _currentSetup.amountPieces; i++)
+        {
+            CreatePieces(_currentSetup.pieces);
+        }
+
+        for (int i = 0; i < _currentSetup.amountEndPieces; i++)
+        {
+            CreatePieces(_currentSetup.endPieces);
+        }
+
+        ColorManager.instance.GetColorByType(_currentSetup.artType);
+
+        StartCoroutine(ScaleSceneCoroutine());
     }
 
     IEnumerator SpawnPiecesCoroutine()
@@ -101,7 +143,23 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(_currentSetup.timeBetweenPieces);
         }
 
-        //ColorManager.instance.GetColorByType(_currentSetup.artType);
+        StartCoroutine(ScaleSceneCoroutine());
+    }
+
+    IEnumerator ScaleSceneCoroutine()
+    {
+        foreach( var p in _spawnedPieces)
+        {
+            p.transform.localScale = Vector3.zero;
+        }
+
+            yield return null;
+
+        for(int i = 0; i < _spawnedPieces.Count; i++)
+        {
+            _spawnedPieces[i].transform.DOScale(sizePiece, spawnTime).SetEase(ease);
+            yield return new WaitForSeconds(spawnDelay);
+        }
     }
 
     public void CleanPieces()
