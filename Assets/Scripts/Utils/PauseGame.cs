@@ -23,7 +23,6 @@ public class PauseGame : MonoBehaviour
 
     public void PlayGame()
     {
-        //playerController.currentVelocity = playerController.playerVelocity;
         playerController._inGame = true;
     }
 }
