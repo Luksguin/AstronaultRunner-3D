@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     [Header("SpawnAnimtion")]
     public float sizePiece;
     public float spawnTime;
-    public float spawnDelay;
+    public float timeBetweenPieces;
     public Ease ease;
 
     private List<PieceManager> _spawnedPieces = new List<PieceManager>();
@@ -158,7 +158,7 @@ public class LevelManager : MonoBehaviour
         for(int i = 0; i < _spawnedPieces.Count; i++)
         {
             _spawnedPieces[i].transform.DOScale(sizePiece, spawnTime).SetEase(ease);
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(timeBetweenPieces);
         }
     }
 
@@ -166,7 +166,7 @@ public class LevelManager : MonoBehaviour
     {
         for(int i = _spawnedPieces.Count - 1; i >= 0; i--)
         {
-            DestroyImmediate(_spawnedPieces[i].gameObject);
+            Destroy(_spawnedPieces[i].gameObject);
         }
 
         _spawnedPieces.Clear();
@@ -178,6 +178,7 @@ public class LevelManager : MonoBehaviour
         {
             CleanPieces();
             SpawnPieces();
+            CoinAnimationManager.instance.StartAnimation();
         }
     }
 }

@@ -11,6 +11,11 @@ public class CoinBase : CollectableBase
     public float lerpCoin;
     private bool _collected = false;
 
+    private void Start()
+    {
+        CoinAnimationManager.instance.RegisterCoin(this);
+    }
+
     protected override void OnCollect()
     {
         //CoinManager.instance.AddCoins();
