@@ -37,7 +37,7 @@ public class CollectableBase : MonoBehaviour
         //animator.SetTrigger(setTrigger);
     }
 
-    protected virtual void DestroyCollectable()
+    public void DestroyCollectable()
     {
         Destroy(gameObject, timeToDestroy);
     }
@@ -46,7 +46,5 @@ public class CollectableBase : MonoBehaviour
     {
         if (systemParticle != null) systemParticle.Play();
         if (audioClip != null) audioClip.Play();
-
-        if(isPowerUp == false) DestroyCollectable();
     }
 }

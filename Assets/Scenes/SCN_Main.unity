@@ -1387,7 +1387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coins:
   - {fileID: 0}
-  sizePiece: 0
+  sizePiece: 1
   spawnTime: 0.3
   timeBetweenCoins: 0.1
   ease: 27

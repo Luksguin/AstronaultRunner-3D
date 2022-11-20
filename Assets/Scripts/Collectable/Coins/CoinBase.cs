@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CoinBase : CollectableBase
 {
-    public PlayerController playerController;
+    //public PlayerController playerController;
+    //private Transform _playerCollision;
 
     [Header("Coin Settings")]
     public float minDistance;
@@ -16,8 +17,15 @@ public class CoinBase : CollectableBase
         CoinAnimationManager.instance.RegisterCoin(this);
     }
 
+    /*private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other);
+        _playerCollision.position = other.transform.position;
+    }*/
+
     protected override void OnCollect()
     {
+        base.OnCollect();
         //CoinManager.instance.AddCoins();
         _collected = true;
     }
@@ -26,9 +34,9 @@ public class CoinBase : CollectableBase
     {
         if (_collected)
         {
-            transform.position = Vector3.Lerp(transform.position, playerController.transform.position, lerpCoin * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, PlayerController.instance.transform.position, lerpCoin * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, playerController.transform.position) < minDistance)
+            if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < minDistance)
             {
                 DestroyCollectable();
             }
