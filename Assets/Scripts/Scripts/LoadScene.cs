@@ -10,8 +10,8 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene(i);
     }
 
-    public void Load(string s)
+    /*public void Load(string s)
     {
         SceneManager.LoadScene(s);
-    }
+    }*/
 }
