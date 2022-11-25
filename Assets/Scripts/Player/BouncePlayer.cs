@@ -9,8 +9,8 @@ public class BouncePlayer : Singleton<BouncePlayer>
     public GameObject player;
     public Ease ease;
 
-    public void Bounce()
+    public void Bounce(float size, float time)
     {
-        player.transform.DOScale(1.1f, .05f).SetEase(ease).SetLoops(2, LoopType.Yoyo);
+        player.transform.DOScale(size, time).SetEase(ease).SetLoops(2, LoopType.Yoyo);
     }
 }

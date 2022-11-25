@@ -18,14 +18,6 @@ public class CoinAnimationManager : Singleton<CoinAnimationManager>
         coins = new List<CoinBase>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StartAnimation();
-        }
-    }
-
     public void RegisterCoin(CoinBase c)
     {
         if (!coins.Contains(c))
