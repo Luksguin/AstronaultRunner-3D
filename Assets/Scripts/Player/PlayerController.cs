@@ -37,8 +37,9 @@ public class PlayerController : Singleton<PlayerController>
     private float _baseSpeed;
     #endregion
 
-    private void Awake()
+    new private void Awake()
     {
+        base.Awake();
         currentVelocity = playerVelocity;
     }
 
