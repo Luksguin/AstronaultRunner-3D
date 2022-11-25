@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CoinBase : CollectableBase
 {
-    //public PlayerController playerController;
-    //private Transform _playerCollision;
-
     [Header("Coin Settings")]
     public float minDistance;
     public float lerpCoin;
@@ -17,16 +14,11 @@ public class CoinBase : CollectableBase
         CoinAnimationManager.instance.RegisterCoin(this);
     }
 
-    /*private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other);
-        _playerCollision.position = other.transform.position;
-    }*/
-
     protected override void OnCollect()
     {
         base.OnCollect();
         //CoinManager.instance.AddCoins();
+        BouncePlayer.instance.Bounce();
         _collected = true;
     }
 
