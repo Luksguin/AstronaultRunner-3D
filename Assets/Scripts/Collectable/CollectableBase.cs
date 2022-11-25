@@ -18,10 +18,10 @@ public class CollectableBase : MonoBehaviour
     [Header("Sounds")]
     public AudioSource audioClip;
 
-    private void Awake()
+    /*private void Awake()
     {
         if(systemParticle != null) systemParticle.transform.SetParent(null);
-    }
+    }*/
 
     private void OnTriggerEnter(Collider collision)
     {

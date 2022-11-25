@@ -110,11 +110,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectorTag: Player
+  timeToDestroy: 0
   systemParticle: {fileID: 0}
   animator: {fileID: 0}
   audioClip: {fileID: 0}
   duration: 2
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 7971285252492169656}
   amount: 2
   animationDuration: 2
   ease: 0
