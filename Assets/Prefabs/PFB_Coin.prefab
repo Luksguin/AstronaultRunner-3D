@@ -146,3 +146,5 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   minDistance: 1.2
   lerpCoin: 4
+  bounceSize: 1.2
+  bounceTime: 0.05
