@@ -67,7 +67,6 @@ public class PlayerController : Singleton<PlayerController>
         _inGame = false;
         AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, currentVelocity / _baseSpeed);
         if (winMenu != null) winMenu.SetActive(true);
-        Debug.Log(_inGame);
     }
 
     public void LoseGame()

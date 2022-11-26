@@ -15,12 +15,12 @@ MonoBehaviour:
   artType: 2
   amountStartPieces: 0
   amountPieces: 5
-  amountEndPieces: 0
-  timeBetweenPieces: 0
+  amountEndPieces: 1
+  timeBetweenPieces: 0.1
   startPieces:
   - {fileID: 4269246911135669867, guid: 69247c9eef2550b49ab3840eacad4887, type: 3}
   pieces:
   - {fileID: 534523605367856963, guid: c38d5dfc31ee4d443b500af257aac313, type: 3}
   - {fileID: 6939623424525971512, guid: 7613f457ee93530499701f42cbd409b4, type: 3}
   endPieces:
-  - {fileID: 4269246911135669867, guid: 69247c9eef2550b49ab3840eacad4887, type: 3}
+  - {fileID: 534523605367856963, guid: 8d51bafc00d706041a8c37e29f7eaaf3, type: 3}
