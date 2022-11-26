@@ -7,9 +7,7 @@ public class CoinBase : CollectableBase
     [Header("Coin Settings")]
     public float minDistance;
     public float lerpCoin;
-    public float bounceSize;
-    public float bounceTime;
-
+    
     private bool _collected = false;
 
     private void Start()
@@ -26,7 +24,6 @@ public class CoinBase : CollectableBase
     {
         base.OnCollect();
         //CoinManager.instance.AddCoins();
-        BouncePlayer.instance.Bounce(bounceSize, bounceTime);
         _collected = true;
     }
 

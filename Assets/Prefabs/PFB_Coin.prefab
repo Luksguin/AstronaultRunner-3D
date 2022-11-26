@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de9616fbb1aa2844bab1f0243e22a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
   startColor: {r: 1, g: 1, b: 1, a: 1}
   meshRenderer: {fileID: 16346163122938011}
 --- !u!1 &1601342395980288204
@@ -160,7 +159,8 @@ MonoBehaviour:
   systemParticle: {fileID: 0}
   animator: {fileID: 0}
   audioClip: {fileID: 0}
-  minDistance: 1.2
-  lerpCoin: 4
   bounceSize: 1.2
   bounceTime: 0.05
+  bounceEase: 1
+  minDistance: 1.2
+  lerpCoin: 4

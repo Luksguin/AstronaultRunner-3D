@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CollectableBase : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class CollectableBase : MonoBehaviour
 
     [Header("Sounds")]
     public AudioSource audioClip;
+
+    [Header("BounceSettings")]
+    public float bounceSize;
+    public float bounceTime;
+    public Ease bounceEase;
 
     /*private void Awake()
     {
@@ -44,6 +50,8 @@ public class CollectableBase : MonoBehaviour
 
     protected virtual void OnCollect()
     {
+        BouncePlayer.instance.Bounce(bounceSize, bounceTime, bounceEase);
+
         if (systemParticle != null) systemParticle.Play();
         if (audioClip != null) audioClip.Play();
     }

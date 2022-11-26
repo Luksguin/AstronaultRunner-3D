@@ -114,5 +114,8 @@ MonoBehaviour:
   systemParticle: {fileID: 0}
   animator: {fileID: 0}
   audioClip: {fileID: 0}
+  bounceSize: 1.2
+  bounceTime: 0.05
+  bounceEase: 23
   duration: 1
   meshRenderer: {fileID: 589906918426295391}
