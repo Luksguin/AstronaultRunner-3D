@@ -30,7 +30,10 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Animation")]
     public float distanceMoveBack;
     public float timeMoveBack;
+
+    [Header("Bools")]
     public bool _inGame = false;
+    public bool _canCreateLevel = true;
 
     #region PRIVATES VARIABLES
     private Vector3 _pos;
@@ -64,6 +67,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void WinGame()
     {
+        _canCreateLevel = false;
         _inGame = false;
         AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, currentVelocity / _baseSpeed);
         if (winMenu != null) winMenu.SetActive(true);
@@ -71,6 +75,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void LoseGame()
     {
+        _canCreateLevel = false;
         _inGame = false;
         AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH, _baseSpeed);
         if (restartMenu != null) restartMenu.SetActive(true);
@@ -82,6 +87,7 @@ public class PlayerController : Singleton<PlayerController>
 
         if (_inGame != true) return;
 
+        _canCreateLevel = false;
         _pos = lerper.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;

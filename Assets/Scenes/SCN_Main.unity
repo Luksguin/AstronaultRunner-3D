@@ -2357,6 +2357,7 @@ MonoBehaviour:
   distanceMoveBack: 0.8
   timeMoveBack: 0.9
   _inGame: 0
+  _canCreateLevel: 1
 --- !u!1 &1374367792
 GameObject:
   m_ObjectHideFlags: 0
