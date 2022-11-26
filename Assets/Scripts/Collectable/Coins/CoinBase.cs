@@ -17,6 +17,11 @@ public class CoinBase : CollectableBase
         CoinAnimationManager.instance.RegisterCoin(this);
     }
 
+    private void OnDestroy()
+    {
+        CoinAnimationManager.instance.UnRegisterCoin(this);
+    }
+
     protected override void OnCollect()
     {
         base.OnCollect();

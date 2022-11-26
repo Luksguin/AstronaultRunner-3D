@@ -27,6 +27,13 @@ public class CoinAnimationManager : Singleton<CoinAnimationManager>
         }
     }
 
+    public void UnRegisterCoin(CoinBase c)
+    {
+        if (!coins.Contains(c))
+        {
+            coins.Remove(c);
+        }
+    }
     public void StartAnimation()
     {
         CleanCoins();
