@@ -25,10 +25,11 @@ public class LevelManager : MonoBehaviour
     private List<PieceManager> _spawnedPieces = new List<PieceManager>();
     private LevelSetup _currentSetup;
 
-    private void Awake()
+    private void Start()
     {
-        //SpawnLevel();
-        //SpawnPieces();
+        CleanPieces();
+        SpawnPieces();
+        CoinAnimationManager.instance.StartAnimation();
     }
 
     public void SpawnLevel()
