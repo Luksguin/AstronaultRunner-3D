@@ -52,7 +52,11 @@ public class CollectableBase : MonoBehaviour
     {
         BouncePlayer.instance.Bounce(bounceSize, bounceTime, bounceEase);
 
-        if (systemParticle != null) systemParticle.Play();
+        if (systemParticle != null)
+        {
+            systemParticle.transform.SetParent(null);
+            systemParticle.Play();
+        }
         if (audioClip != null) audioClip.Play();
     }
 }
