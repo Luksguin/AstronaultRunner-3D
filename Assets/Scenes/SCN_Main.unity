@@ -1166,7 +1166,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856706387}
-  m_LocalRotation: {x: -0, y: -0.000000011175871, z: 0.0000000027939677, w: 1}
+  m_LocalRotation: {x: -0, y: -0.000000007450581, z: 0.0000000027939677, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1885,6 +1885,7 @@ MonoBehaviour:
   startColor: {r: 1, g: 0.19215687, b: 0.19215687, a: 1}
   newColor: {r: 1, g: 0.31156966, b: 0.23400003, a: 1}
   playerTransform: {fileID: 1372686502}
+  startHeigth: {x: 0, y: -0.69, z: 0}
   coinCollector: {fileID: 1312719183}
 --- !u!1 &1192573159
 GameObject:
