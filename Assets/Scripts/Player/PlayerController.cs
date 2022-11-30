@@ -31,6 +31,8 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Particles")]
     public ParticleSystem particleKill;
 
+    [Header("Limits")]
+    public Vector2 playerLimits;
 
     [Header("Bools")]
     public bool _inGame = false;
@@ -89,10 +91,20 @@ public class PlayerController : Singleton<PlayerController>
 
         if (_inGame != true) return;
 
+
         _canCreateLevel = false;
         _pos = lerper.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
+
+        if (_pos.x < playerLimits.x)
+        {
+            _pos.x = playerLimits.x;
+        }
+        else if(_pos.x > playerLimits.y)
+        {
+            _pos.x = playerLimits.y;
+        }
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpTime * Time.deltaTime);
         transform.Translate(transform.forward * currentVelocity * Time.deltaTime);

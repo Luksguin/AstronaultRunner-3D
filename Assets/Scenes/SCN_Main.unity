@@ -2491,6 +2491,7 @@ MonoBehaviour:
   distanceMoveBack: 0.8
   timeMoveBack: 0.9
   particleKill: {fileID: 1889213185}
+  playerLimits: {x: -4, y: 4}
   _inGame: 0
   _canCreateLevel: 1
 --- !u!114 &1372686505
