@@ -173,9 +173,9 @@ public class LevelManager : MonoBehaviour
         _spawnedPieces.Clear();
     }
 
-    private void Update()
+    public void ChangeLevel()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && PlayerController.instance._canCreateLevel == true)
+        if (PlayerController.instance._canCreateLevel == true)
         {
             CleanPieces();
             SpawnPieces();
