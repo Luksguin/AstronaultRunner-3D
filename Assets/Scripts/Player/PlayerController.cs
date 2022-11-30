@@ -30,6 +30,7 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Particles")]
     public ParticleSystem particleKill;
+    public ParticleSystem particleWin;
 
     [Header("Limits")]
     public Vector2 playerLimits;
@@ -72,6 +73,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         _canCreateLevel = false;
         _inGame = false;
+        particleWin.Play();
         AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, currentVelocity / _baseSpeed);
         if (winMenu != null) winMenu.SetActive(true);
     }
