@@ -47,7 +47,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
     #region INVENCIBLE
     private void ChangeColor(Color newColor)
     {
-        playerController.playerRenderer.material.SetColor("_Color", newColor);
+        //playerController.playerRenderer.material.SetColor("_Color", newColor);
     }
 
     public void InitPowerUpInvencible()

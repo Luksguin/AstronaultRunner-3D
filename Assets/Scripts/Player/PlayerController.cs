@@ -6,9 +6,6 @@ using Ebac.Core.Singleton;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    [Header("PowerUp")]
-    public MeshRenderer playerRenderer;
-
     public float playerVelocity;
     public float currentVelocity;
 
@@ -30,6 +27,10 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Animation")]
     public float distanceMoveBack;
     public float timeMoveBack;
+
+    [Header("Particles")]
+    public ParticleSystem particleKill;
+
 
     [Header("Bools")]
     public bool _inGame = false;
@@ -77,6 +78,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         _canCreateLevel = false;
         _inGame = false;
+        if(particleKill != null) particleKill.Play();
         AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH, _baseSpeed);
         if (restartMenu != null) restartMenu.SetActive(true);
     }
