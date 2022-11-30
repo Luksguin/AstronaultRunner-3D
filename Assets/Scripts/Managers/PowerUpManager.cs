@@ -10,6 +10,7 @@ public class PowerUpManager : Singleton<PowerUpManager>
 
     [Header("PowerUpVelocity")]
     public float forcePowerUpVelocity;
+    private bool _isRunnig = false;
 
     [Header("PowerUpInvencible")]
     public Color startColor;
@@ -35,11 +36,16 @@ public class PowerUpManager : Singleton<PowerUpManager>
     #region VELOCITY
     public void InitPowerUpVelocity()
     {
-        playerController.currentVelocity *= forcePowerUpVelocity;
+        if (_isRunnig == false)
+        {
+            _isRunnig = true;
+            playerController.currentVelocity *= forcePowerUpVelocity;
+        }
     }
 
     public void EndPowerUpVelocity()
     {
+        _isRunnig = false;
         playerController.currentVelocity = playerController.playerVelocity;
     }
     #endregion
