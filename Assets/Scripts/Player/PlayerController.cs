@@ -35,6 +35,12 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Limits")]
     public Vector2 playerLimits;
 
+    [Header("Audio")]
+    public AudioSource ambienceAudio;
+    public AudioSource footstepAudio;
+    public AudioSource winAudio;
+    public AudioSource loseAudio;
+
     [Header("Bools")]
     public bool _inGame = false;
     public bool _canCreateLevel = true;
@@ -73,7 +79,10 @@ public class PlayerController : Singleton<PlayerController>
     {
         _canCreateLevel = false;
         _inGame = false;
-        particleWin.Play();
+        if (winAudio != null) winAudio.Play();
+        if (footstepAudio != null) footstepAudio.Pause();
+        if (ambienceAudio != null) ambienceAudio.Pause();
+        if (particleWin != null) particleWin.Play();
         AnimationManager.instance.Play(AnimationManager.AnimationsType.IDLE, currentVelocity / _baseSpeed);
         if (winMenu != null) winMenu.SetActive(true);
     }
@@ -82,9 +91,17 @@ public class PlayerController : Singleton<PlayerController>
     {
         _canCreateLevel = false;
         _inGame = false;
-        if(particleKill != null) particleKill.Play();
+        if (loseAudio != null) loseAudio.Play();
+        if (footstepAudio != null) footstepAudio.Pause();
+        if (ambienceAudio != null) ambienceAudio.Pause();
+        if (particleKill != null) particleKill.Play();
         AnimationManager.instance.Play(AnimationManager.AnimationsType.DEATH, _baseSpeed);
         if (restartMenu != null) restartMenu.SetActive(true);
+    }
+
+    public void AudioPlay()
+    {
+        if (footstepAudio != null) footstepAudio.Play();
     }
 
     void Update()
@@ -93,11 +110,11 @@ public class PlayerController : Singleton<PlayerController>
 
         if (_inGame != true) return;
 
-
         _canCreateLevel = false;
         _pos = lerper.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
+
 
         if (_pos.x < playerLimits.x)
         {

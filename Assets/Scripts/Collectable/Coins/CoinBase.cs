@@ -7,6 +7,10 @@ public class CoinBase : CollectableBase
     [Header("Coin Settings")]
     public float minDistance;
     public float lerpCoin;
+    private float _timeToDestroy = 1f;
+
+    public GameObject sphereCoin;
+    public AudioSource audioCoin;
     
     private bool _collected = false;
 
@@ -23,8 +27,9 @@ public class CoinBase : CollectableBase
     protected override void OnCollect()
     {
         base.OnCollect();
-        //CoinManager.instance.AddCoins();
+        if (audioCoin != null) audioCoin.Play();
         _collected = true;
+        Destroy(sphereCoin);
     }
 
     private void Update()
@@ -35,7 +40,7 @@ public class CoinBase : CollectableBase
 
             if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) < minDistance)
             {
-                DestroyCollectable();
+                Destroy(gameObject, _timeToDestroy);
             }
         }
     }
